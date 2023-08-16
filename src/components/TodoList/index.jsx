@@ -1,17 +1,22 @@
-import "./style.css"
+import Styles from "./style.module.css"
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const TodoList = (props) => {
   const { todoList, handleDeleteTodo } = props;
 
   return (
-    <ul className='todo-list'>
+    <ul className={Styles.todoList}>
       {todoList.map((todo) => {
         return (
-          <li className='todo' key={todo.id}>
-            <span className='todo-task'>{todo.title}</span>
-            <i className="far fa-trash-alt fa-lg"
-              onClick={() => handleDeleteTodo(todo.id, todo.title)}>
-            </i>
+          <li className={Styles.todo} key={todo.id}>
+            <span className={Styles.todoTask}>{todo.title}</span>
+            <FontAwesomeIcon
+              className={Styles.far}
+              icon={faTrashAlt}
+              size={"lg"}
+              onClick={() => handleDeleteTodo(todo.id, todo.title)}
+            />
           </li>
         );
       })}

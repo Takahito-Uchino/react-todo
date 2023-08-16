@@ -1,27 +1,38 @@
-import React from "react"
+import React from "react";
 import { AddTodo } from "./components/AddTodo";
+import { InputForm } from "./components/Common/InputForm";
 import { TodoList } from "./components/TodoList";
-import { useApp } from "./hooks/useApp"
-import './App.css';
-
+import { useApp } from "./hooks/useApp";
+import Styles from './App.module.css';
 
 export const App = () => {
   const [states, actions] = useApp();
 
   return (
-    <div className="App">
-      <h1 className='title'>Todo List</h1>
+    <div className={Styles.app}>
+      <h1 className={Styles.title}>Todo List</h1>
       {/* Todo追加領域 */}
-      <section className='common-area'>
+      <section className={Styles.commonArea}>
         <AddTodo
           addInputValue={states.addInputValue} 
-          onChangeAddInputValue={actions.onChangeAddInputValue} 
+          onChangeTodo={actions.onChangeAddInputValue} 
           handleAddTodo={actions.handleAddTodo}
         />
       </section>
+      {/* Todo検索フォームエリア */}
+      <section className={Styles.commonArea}>
+        <InputForm
+          placeholder={"Search Keyword"}
+          value={states.searchKeyword}
+          handleChangeValue={actions.handleSearchTodo}
+        />
+      </section>
       {/* Todo一覧表示領域 */}
-      <section className='common-area'>
-        <TodoList todoList={states.todoList} handleDeleteTodo={actions.handleDeleteTodo} />
+      <section className={Styles.commonArea}>
+        <TodoList 
+          todoList={states.showTodoList} 
+          handleDeleteTodo={actions.handleDeleteTodo}
+        />
       </section>
     </div>
   );

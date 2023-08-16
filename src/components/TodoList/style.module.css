@@ -1,4 +1,4 @@
-.todo-list {
+.todoList {
   padding: 0;
 }
 
@@ -14,7 +14,7 @@
   height: 50px;
 }
 
-.todo-task {
+.todoTask {
   cursor: pointer;
   display: block;
   padding-top: 8px;
@@ -27,8 +27,8 @@
 .far {
   cursor: pointer;
   position: absolute;
-  top: 34px;
-  right: 10px;
+  top: 24px;
+  right: 20px;
   width: 30px;
   color: #ff9900;
 }
